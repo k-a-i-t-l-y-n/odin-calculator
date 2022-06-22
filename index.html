@@ -13,11 +13,9 @@
     <h2>--By pushing its buttons</h2>
 
     <div class="calculator">
-        <div class="calculator-display">
-            1234567
-        </div>
-        <div class="calculator-keys">
+        <div class="calculator-display">0</div>
 
+        <div class="calculator-keys">
             <button class="key-operation" data-action="all-clear">AC</button>
             <button class="key-operation" data-action="clear">Clear</button>
             <button class="key-operation" data-action="delete">Delete</button>
@@ -37,11 +35,12 @@
 
             <button>2</button>
             <button>3</button>
+            <button>1</button>
 
-            <button>/</button>
-            <button>x</button>
-            <button>-</button>
-            <button>+</button>
+            <button class="key-operation" data-action="divide">/</button>
+            <button class="key-operation" data-action="multiply">&times;</button>
+            <button class="key-operation" data-action="subtract">-</button>
+            <button class="key-operation" data-action="add">+</button>
 
             <button>0</button>
             <button class="key-decimal" data-action="decimal">.</button>
