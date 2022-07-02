@@ -3,7 +3,8 @@ const keys = calculator.querySelector(".calculator-keys");
 const display = document.querySelector(".calculator-display");
 
 const operators = [];
-const numbers = [];
+const operands = [];
+
 
 //Add click eventListener to all buttons in .calculator-keys class
 keys.addEventListener("click", e => {
@@ -17,7 +18,13 @@ keys.addEventListener("click", e => {
             calculator.dataset.secondNum = 0;
         }
         else if (action === "clear") {
-            display.textContent = "0";
+            if (display.textContent != "") {
+                calculator.dataset.firstNum = parseFloat(display.textContent);
+                display.textContent = "0";
+            }
+            else {
+                display.textContent = "0";
+            }
         }
         else if (action === "delete") {
             if (display.textContent.length === 1) {
@@ -37,14 +44,21 @@ keys.addEventListener("click", e => {
             action === "subtract" ||
             action === "add") {
 
-            if(display.content != ""){
-                calculator.dataset.firstNum = display.textContent;
-                numbers.push(calculator.dataset.firstNum);
-                operators.push(action);
-                display.textContent = " ";
+            if (display.textContent == "0") {
                 calculator.dataset.operator = action;
+                operators.push(action);
             }
-            
+
+            else if (display.textContent != "") {
+                calculator.dataset.firstNum = display.textContent;
+                calculator.dataset.operator = action;
+
+                operators.push(action);
+                operands.push(display.textContent);
+
+                display.textContent = " ";
+
+            }
         }
 
         else if (action === "decimal") {
@@ -52,7 +66,14 @@ keys.addEventListener("click", e => {
         }
 
         else if (action === "sign") {
-            console.log("sign change");
+            let number = parseFloat(display.textContent);
+
+            if (number < 0) {
+                display.textContent = Math.abs(number);
+            }
+            else {
+                display.textContent = "-" + number;
+            }
         }
 
         else if (action === "equal") {
@@ -60,13 +81,15 @@ keys.addEventListener("click", e => {
             const firstNum = calculator.dataset.firstNum;
             const secondNum = display.textContent;
 
+            console.log("OP F S: " + operator, firstNum, secondNum);
+
             if (operator === "squareRoot") {
-                display.textContent = calculateAnswer(firstNum, 0, operator);
+                display.textContent = calculate(firstNum, 0, operator);
                 console.log(display.textContent);
             }
 
-            else{
-                display.textContent = calculateAnswer(firstNum, secondNum, operator);
+            else {
+                display.textContent = calculate(firstNum, secondNum, operator);
                 console.log(display.textContent);
             }
         }
@@ -82,13 +105,13 @@ keys.addEventListener("click", e => {
     }
 })
 
-function calculateAnswer(first, second, operator) {
+
+function calculate(first, second, operator) {
 
     firstNum = parseFloat(first);
     secondNum = parseFloat(second);
 
     if (operator === "add") {
-        console.log(firstNum + secondNum);
         return firstNum + secondNum;
     }
 
