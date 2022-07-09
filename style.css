@@ -1,36 +1,96 @@
+body{
+    background-color: #e5e5e5;
+}
+.header{
+    background-color: #f1c232;
+    border: solid  #191919 3px;
+    border-radius: 5px;
+    margin: 50px auto;
+    font-family: sans-serif;
+    padding: 5px;
+    width: 600px;
+}
+
 .calculator{
+    background-color: #84b4e1;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 620px;
+    height: auto;
+    margin: auto;
+    padding: 10px;
+    border: solid #191919 10px;
+    border-radius: 10px;
 }
 
 .calculator-display{
     font-size: 60px;
+    margin: auto;
     height: 65px;
-    width: 400px;
+    width: 600px;
     color: #191919;
     border: solid #808080 5px;
     background-color: #e5e5e5;
     text-align: right;
+    border-radius: 5px;
 }
 button{
-    width: 70px;
     height: 50px;
+    font-size: 30px;
     text-align: center;
+    border: solid #808080 1px;
+    border-radius: 5px;
 }
 
 .format-container{
     display: flex;
-    width: 400px;
+    width: 600px;
     justify-content: space-between;
     gap: 10px;
     margin: 10px;
 }
 
+.format-container button{
+    width: 110px;
+}
+
 .grid-container{
-    width: 400px;
+    width: 600px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5,1fr);
     grid-gap: 1rem 2rem;
+    padding: 10px;
+    margin: auto;
+}
+
+.key-operation, 
+.key-calculate
+{
+    background-color: #808080;
+   
+}
+
+.key-operation:hover, 
+.key-calculate:hover
+{
+    background-color: #737373;
+}
+
+.simple-operation{
+    background-color: #eb8922;
+}
+
+.simple-operation:hover{
+    background-color: #d37b1e;
+}
+
+#delete
+{
+    background-color: #cc0000;
+}
+
+#delete:hover{
+    background-color: #b20000;
 }
